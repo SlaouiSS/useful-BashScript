@@ -1,0 +1,9 @@
+#!/bin/bash
+find_my_file()
+{
+echo "Location is : `locate $1`"
+return
+}
+find_my_file $1
+
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "opening intellij idea ..."
+cd /../intellij/bin #location of intellij bin
+./idea.sh

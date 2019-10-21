@@ -1,0 +1,5 @@
+#!/bin/bash
+let "portNumber = 1234"
+echo "Connect to the server number: $portNumber"
+echo "Connecting..."
+sshpass -p 'passwd' ssh server@localhost -p $portNumber # connect with ssh directly without prompt password to the server 

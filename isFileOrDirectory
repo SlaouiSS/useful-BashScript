@@ -1,0 +1,26 @@
+#!/bin/bash
+
+find_my_file()
+{
+	echo "`locate $1`"
+}
+
+
+# User-defined function
+isFileOrDirectory(){
+	# $f is local variable
+	local fileName=$( find_my_file $1 )
+	echo "Location is : " + "$fileName"
+	# file attributes comparisons using test i.e. [ ... ]
+	[ -f "$fileName" ] && { echo "$1 is a regular file."; exit 0; }
+	[ -d "$fileName" ] && { echo "$1 is a directory."; exit 0; }
+	[ -L "$fileName" ] && { echo "$1 is a symbolic link."; exit 0; }
+	[ -x "$fileName" ] && { echo "$1 is an executeble file."; exit 0; }
+	return
+}
+
+# make sure filename supplied as command line arg else die
+[ $# -eq 0 ] && { echo "Usage: $0 filename"; exit 1; }
+
+# invoke the is_file_dir and pass $file as arg
+isFileOrDirectory $1
